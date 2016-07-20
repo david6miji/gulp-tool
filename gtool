@@ -1,0 +1,4 @@
+#!/bin/bash
+echo "gulp tools"
+gulp
+

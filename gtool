@@ -1,4 +1,3 @@
 #!/bin/bash
-echo "gulp tools"
-gulp
+gulp --silent --gulpfile /gulp-tool/gulpfile.js $*
 

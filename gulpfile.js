@@ -15,12 +15,12 @@ process.on('uncaughtException', function(error) {
 		
         var npm = spawn( "npm", [ "install" ]);
 		
-        dig.on('error', function(err) {  console.log( err ); });
+        npm.on('error', function(err) {  console.log( err ); });
 
-        dig.stderr.on('data', function(data) { console.log( data ); });
-        dig.stdout.on('data', function(data) { console.log( data ); });
+        npm.stderr.on('data', function(data) { console.log( data ); });
+        npm.stdout.on('data', function(data) { console.log( data ); });
 
-        dig.on('exit', function(status) {
+        npm.on('exit', function(status) {
 			console.log( 'status = ', status );
             if( status === 0){
         

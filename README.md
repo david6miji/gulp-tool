@@ -1,8 +1,8 @@
 # gulp-tool
 
-### Introduction
+## Introduction
 
-## Getting Stared with gulp-tool
+## Getting stared with gulp-tool
 
 ### Prerequisites
 

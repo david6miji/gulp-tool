@@ -2,7 +2,7 @@
 
 ## Introduction
 
-## Getting stared with gulp-tool
+## Getting started with gulp-tool
 
 ### Prerequisites
 
@@ -16,4 +16,14 @@
 	$ cd gulp-tool
 	$ ./install.sh
 	
+### Enter into gulp-tool
+
+	$ cd [working directory]
+	$ gulp-tool
+	
+### Enter into gulp-tool
+	
+In gulp-tool
+
+	$ gtl update	
 	

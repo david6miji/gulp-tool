@@ -4,9 +4,12 @@
 var 
 
     gulp				= require('gulp'),
+	requireDir 			= require('require-dir'),
 //	install 			= require("gulp-install"),
 
 end_require= true;
+
+requireDir('./gulp_tasks');
 
 gulp.task('welcome', function() {
 	console.log( "welcome gulp-tool" );

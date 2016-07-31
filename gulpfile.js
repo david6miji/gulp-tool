@@ -16,18 +16,18 @@ process.on('uncaughtException', function(error) {
         var npm = spawn( "npm", [ "install" ]);
 		
         npm.on('error', function(err) {  
-			console.log( 'npm error', err ); 
+			console.log( 'npm install(err) : ', err ); 
 		});
 
         npm.stderr.on('data', function(data) { 
-			console.log( 'npm.stderr : ' + data ); 
+			console.log( 'npm install : ' + data ); 
 		});
         npm.stdout.on('data', function(data) { 
-			console.log( 'npm.stdout : ' + data ); 
+			console.log( 'npm install : ' + data ); 
 		});
 
         npm.on('exit', function(status) {
-			console.log( 'status = ', status );
+			console.log( 'npm install status = ', status );
             if( status === 0){
         
             } else {

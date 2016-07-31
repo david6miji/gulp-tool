@@ -8,13 +8,20 @@ var
 	
 end_base_module;
 
-process.argv.forEach((val, index) => {
-  console.log(`${index}: ${val}`);
-});
 
 
 gulp.task('reload', function() {
-    spawn('gulp', [], {stdio: 'inherit'});
+	var argvs = [];
+
+	process.argv.forEach((val, index) => {
+		if( index > 1 )  {
+			argvs.push( val );
+			console.log(`${index}: ${val}`);
+		}
+//		console.log(`${index}: ${val}`);
+	});
+	
+    spawn('gulp', argvs, {stdio: 'inherit'});
     process.exit();
 });
 
@@ -23,29 +30,29 @@ process.on('uncaughtException', function(error) {
 	if( error.code === 'MODULE_NOT_FOUND' ){
 		console.log( "Try to npm install" );
 		
-//        var npm = spawn( "npm", [ "install" ]);
-//		
-//        npm.on('error', function(err) {  
-//			console.log( 'npm install(err) : ', err ); 
-//		});
-//
-//        npm.stderr.on('data', function(data) { 
-//			console.log( 'npm install : ' + data ); 
-//		});
-//        npm.stdout.on('data', function(data) { 
-//			console.log( 'npm install : ' + data ); 
-//		});
-//
-//        npm.on('exit', function(status) {
-//			console.log( 'npm install status = ', status );
-//			
-//            if( status === 0){
-//				gulp.start( 'reload' );
-//            } else {
-//				process.exit(1)
-//            }
-//			
-//        });
+        var npm = spawn( "npm", [ "install" ]);
+		
+        npm.on('error', function(err) {  
+			console.log( 'npm install(err) : ', err ); 
+		});
+
+        npm.stderr.on('data', function(data) { 
+			console.log( 'npm install : ' + data ); 
+		});
+        npm.stdout.on('data', function(data) { 
+			console.log( 'npm install : ' + data ); 
+		});
+
+        npm.on('exit', function(status) {
+			console.log( 'npm install status = ', status );
+			
+            if( status === 0){
+				gulp.start( 'reload' );
+            } else {
+				process.exit(1)
+            }
+			
+        });
 		
 	} else {
 		process.exit(1)	

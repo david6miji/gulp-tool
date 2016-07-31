@@ -61,6 +61,8 @@ gulp.task('npm:install', function() {
 				console.log( 'please check gulp-tool package' );
             }
 			
+			process.exit(1)	;
+			
         });
 		
 });
@@ -70,9 +72,9 @@ process.on('uncaughtException', function(error) {
 	if( error.code === 'MODULE_NOT_FOUND' ){
 		gulp.start( 'npm:install' );
 		
-	} 
-	
-	process.exit(1)	
+	} else {
+		process.exit(1)	
+	}	
 	 
 });
 

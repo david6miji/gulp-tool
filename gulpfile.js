@@ -20,10 +20,10 @@ process.on('uncaughtException', function(error) {
 		});
 
         npm.stderr.on('data', function(data) { 
-			console.log( 'npm.stderr : ', data ); 
+			console.log( 'npm.stderr : ' + data ); 
 		});
         npm.stdout.on('data', function(data) { 
-			console.log( 'npm.stdout : ',  data ); 
+			console.log( 'npm.stdout : ' + data ); 
 		});
 
         npm.on('exit', function(status) {

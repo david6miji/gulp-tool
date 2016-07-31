@@ -15,10 +15,16 @@ process.on('uncaughtException', function(error) {
 		
         var npm = spawn( "npm", [ "install" ]);
 		
-        npm.on('error', function(err) {  console.log( err ); });
+        npm.on('error', function(err) {  
+			console.log( 'npm error', err ); 
+		});
 
-        npm.stderr.on('data', function(data) { console.log( data ); });
-        npm.stdout.on('data', function(data) { console.log( data ); });
+        npm.stderr.on('data', function(data) { 
+			console.log( 'npm.stderr : ', data ); 
+		});
+        npm.stdout.on('data', function(data) { 
+			console.log( 'npm.stdout : ',  data ); 
+		});
 
         npm.on('exit', function(status) {
 			console.log( 'status = ', status );

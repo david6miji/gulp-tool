@@ -5,10 +5,8 @@ var
 
 	spawn 				= require('child_process').spawn,
     gulp				= require('gulp'),
-	requireDir 			= require('require-dir'),
-//	install 			= require("gulp-install"),
-
-end_require= true;
+	
+end_base_module;
 
 process.on('uncaughtException', function(error) {
 	console.log( error );
@@ -20,6 +18,13 @@ process.on('uncaughtException', function(error) {
 	}
 	 process.exit(1)
 });
+
+var 
+
+	requireDir 			= require('require-dir'),
+//	install 			= require("gulp-install"),
+
+end_require= true;
 
 requireDir('./gulp_tasks');
 

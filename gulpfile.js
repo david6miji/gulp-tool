@@ -1,7 +1,8 @@
 process.on('uncaughtException', function(error) {
-	 errorManagement.handler.handleError(error);
-	 if(!errorManagement.handler.isTrustedError(error))
-	 process.exit(1)
+	console.log( error );
+//	 errorManagement.handler.handleError(error);
+//	 if(!errorManagement.handler.isTrustedError(error))
+//	 process.exit(1)
 });
 
 (function() {

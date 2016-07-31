@@ -6,9 +6,9 @@
 
 ### Prerequisites
 
-	ubunto or debian
-	docker
-	git
+	Linux
+	Docker
+	Git
 
 ### Download and install	
 

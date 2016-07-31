@@ -13,10 +13,27 @@ process.on('uncaughtException', function(error) {
 	if( error.code === 'MODULE_NOT_FOUND' ){
 		console.log( "Try to npm install" );
 		
-	} else {
+        var npm = spawn( "npm", [ "install" ]);
 		
+        dig.on('error', function(err) {  console.log( err ); });
+
+        dig.stderr.on('data', function(data) { console.log( data ); });
+        dig.stdout.on('data', function(data) { console.log( data ); });
+
+        dig.on('exit', function(status) {
+			console.log( 'status = ', status );
+            if( status === 0){
+        
+            } else {
+        
+            }
+			process.exit(1)
+        });
+		
+	} else {
+		process.exit(1)	
 	}
-	 process.exit(1)
+	 
 });
 
 var 

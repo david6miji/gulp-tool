@@ -8,8 +8,6 @@ var
 	
 end_base_module;
 
-
-
 gulp.task('reload', function() {
 	var argvs = [];
 
@@ -18,19 +16,29 @@ gulp.task('reload', function() {
 			argvs.push( val );
 			console.log(`${index}: ${val}`);
 		}
-//		console.log(`${index}: ${val}`);
 	});
 	
     spawn('gulp', argvs, {stdio: 'inherit'});
     process.exit();
 });
 
-process.on('uncaughtException', function(error) {
-	console.log( error );
-	if( error.code === 'MODULE_NOT_FOUND' ){
-		console.log( "Try to npm install" );
-		
-        var npm = spawn( "npm", [ "install" ]);
+gulp.task('update', function() {
+	
+	console.log( '-------------------------------------------------------------------' );
+	console.log( '>> run gulp-tool update.' );
+	console.log( '-------------------------------------------------------------------' );
+	
+	// git reset --hard HEAD
+	// git pull
+	// 
+	
+});
+
+gulp.task('npm:install', function() {
+	
+	console.log( 'gtl : npm install.' );
+
+    var npm = spawn( "npm", [ "install" ]);
 		
         npm.on('error', function(err) {  
 			console.log( 'npm install(err) : ', err ); 
@@ -44,19 +52,27 @@ process.on('uncaughtException', function(error) {
 		});
 
         npm.on('exit', function(status) {
-			console.log( 'npm install status = ', status );
 			
             if( status === 0){
-				gulp.start( 'reload' );
+				console.log( 'npm install success!' );
+				console.log( 'please rerun gtl' );
             } else {
-				process.exit(1)
+				console.log( 'npm install fail!' );
+				console.log( 'please check gulp-tool package' );
             }
 			
         });
 		
-	} else {
-		process.exit(1)	
-	}
+});
+
+process.on('uncaughtException', function(error) {
+	console.log( error );
+	if( error.code === 'MODULE_NOT_FOUND' ){
+		gulp.start( 'npm:install' );
+		
+	} 
+	
+	process.exit(1)	
 	 
 });
 

@@ -4,11 +4,15 @@ var
 	
 end_require= true;
 
-gulp.task('update', function() {
+gulp.task('update-test', function() {
 	
 	console.log( '-------------------------------------------------------------------' );
 	console.log( '>> run gulp-tool update.' );
 	console.log( '-------------------------------------------------------------------' );
+	
+	// git reset --hard HEAD
+	// git pull
+	// 
 	
 });
 

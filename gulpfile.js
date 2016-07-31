@@ -13,11 +13,6 @@ gulp.task('reload', function() {
     process.exit();
 });
 
-gulp.task('ttt', function() {
-	console.log( 'CALL ttt' );
-	
-});
-
 process.on('uncaughtException', function(error) {
 	console.log( error );
 	if( error.code === 'MODULE_NOT_FOUND' ){
@@ -39,14 +34,12 @@ process.on('uncaughtException', function(error) {
         npm.on('exit', function(status) {
 			console.log( 'npm install status = ', status );
 			
-			gulp.start( 'ttt' );
-			
             if( status === 0){
-        
+				gulp.start( 'reload' );
             } else {
-        
+				process.exit(1)
             }
-			process.exit(1)
+			
         });
 		
 	} else {

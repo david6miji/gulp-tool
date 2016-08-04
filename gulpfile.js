@@ -5,9 +5,55 @@ var
 
 	spawn 				= require('child_process').spawn,
     gulp				= require('gulp'),
-	runSequence 		= require('run-sequence'),
 	
 end_base_module;
+
+gulp.task('npm:install', function() {
+	
+	console.log( 'gtl : npm install.' );
+
+    var npm = spawn( "npm", [ "install" ]);
+		
+        npm.on('error', function(err) {  
+			console.log( 'npm install(err) : ', err ); 
+		});
+
+        npm.stderr.on('data', function(data) { 
+			console.log( 'npm install : ' + data ); 
+		});
+        npm.stdout.on('data', function(data) { 
+			console.log( 'npm install : ' + data ); 
+		});
+
+        npm.on('exit', function(status) {
+			
+            if( status === 0){
+				console.log( 'npm install success!' );
+				console.log( 'please rerun gtl' );
+            } else {
+				console.log( 'npm install fail!' );
+				console.log( 'please check gulp-tool package' );
+            }
+			
+			process.exit(1)	;
+			
+        });
+		
+});
+
+process.on('uncaughtException', function(error) {
+	console.log( error );
+	if( error.code === 'MODULE_NOT_FOUND' ){
+		gulp.start( 'npm:install' );
+		
+	} else {
+		process.exit(1)	
+	}	
+	 
+});
+
+var 
+	runSequence 		= require('run-sequence');
 
 gulp.task('reload', function() {
 	var argvs = [];
@@ -93,51 +139,7 @@ gulp.task('update', function() {
 		console.log( 'gtl:update sucess.' );
 	});
 	
-});
-
-gulp.task('npm:install', function() {
-	
-	console.log( 'gtl : npm install.' );
-
-    var npm = spawn( "npm", [ "install" ]);
-		
-        npm.on('error', function(err) {  
-			console.log( 'npm install(err) : ', err ); 
-		});
-
-        npm.stderr.on('data', function(data) { 
-			console.log( 'npm install : ' + data ); 
-		});
-        npm.stdout.on('data', function(data) { 
-			console.log( 'npm install : ' + data ); 
-		});
-
-        npm.on('exit', function(status) {
-			
-            if( status === 0){
-				console.log( 'npm install success!' );
-				console.log( 'please rerun gtl' );
-            } else {
-				console.log( 'npm install fail!' );
-				console.log( 'please check gulp-tool package' );
-            }
-			
-			process.exit(1)	;
-			
-        });
-		
-});
-
-process.on('uncaughtException', function(error) {
-	console.log( error );
-	if( error.code === 'MODULE_NOT_FOUND' ){
-		gulp.start( 'npm:install' );
-		
-	} else {
-		process.exit(1)	
-	}	
-	 
-});
+});	
 
 var 
 

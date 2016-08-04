@@ -241,7 +241,7 @@ gulp.task('push', function() {
 	
 	runSequence( 'gtl:git:add-all', 
 				 'gtl:git:commit-backup',  
-				 'gtl:git:commit-backup',
+				 'gtl:git:push',
 				function(){ 
 					console.log( 'gtl:push success.' );
 	});

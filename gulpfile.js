@@ -72,9 +72,11 @@ gulp.task('git:pull', function() {
 
         npm.on('exit', function(status) {
 			
-            if( status !== 0){
+            if( status === 0){
+				console.log( 'git:reset success' );
+            } else {
 				console.log( 'git:reset fail! code = ', status );
-            }
+			}
 			
         });
 	

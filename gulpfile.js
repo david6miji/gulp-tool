@@ -89,10 +89,6 @@ gulp.task('update', function() {
 	gulp.start( 'gtl:git:reset' );
 	gulp.start( 'gtl:git:pull' );
 	
-	// git reset --hard HEAD
-	// git pull
-	// 
-	
 });
 
 gulp.task('npm:install', function() {

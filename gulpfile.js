@@ -1,6 +1,7 @@
 (function() {
 'use strict';
 
+console.log( __dirname );
 var 
 
 	spawn 				= require('child_process').spawn,

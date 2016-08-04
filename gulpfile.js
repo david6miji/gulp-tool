@@ -130,13 +130,120 @@ gulp.task('gtl:git:pull', function() {
 	
 })
 
+gulp.task('gtl:git:add-all', function() {
+	console.log( 'git:add-all' );
+
+    var git_add_all = spawn( "git", 
+	                      [ "add", "--all" ], 
+						  { cwd: "/work/", env: process.env }
+						 );
+
+        git_add_all.on('error', function(err) {  
+			console.log( 'gtl:git:add-all(error) : ', err ); 
+		});
+
+        git_add_all.stderr.on('data', function(data) { 
+			console.log( 'gtl:git:add-all(stderr) : ' + data ); 
+		});
+        git_add_all.stdout.on('data', function(data) { 
+			console.log( 'gtl:git:add-all(stdout) : ' + data ); 
+		});
+
+        git_add_all.on('exit', function(status) {
+			
+            if( status === 0){
+				console.log( 'gtl:git:add-all success' );
+            } else {
+				console.log( 'gtl:git:add-all fail! code = ', status );
+			}
+			
+        });
+	
+})
+
+gulp.task('gtl:git:commit-backup', function() {
+	console.log( 'git:commit-backup' );
+
+    var git_add_all = spawn( "git", 
+	                      [ "commit", "-a", "-m", "backup" ], 
+						  { cwd: "/work/", env: process.env }
+						 );
+
+        git_add_all.on('error', function(err) {  
+			console.log( 'gtl:git:commit-backup(error) : ', err ); 
+		});
+
+        git_add_all.stderr.on('data', function(data) { 
+			console.log( 'gtl:git:commit-backup(stderr) : ' + data ); 
+		});
+        git_add_all.stdout.on('data', function(data) { 
+			console.log( 'gtl:git:commit-backup(stdout) : ' + data ); 
+		});
+
+        git_add_all.on('exit', function(status) {
+			
+            if( status === 0){
+				console.log( 'gtl:git:commit-backup success' );
+            } else {
+				console.log( 'gtl:git:commit-backup fail! code = ', status );
+			}
+			
+        });
+	
+})
+
+gulp.task('gtl:git:push', function() {
+	console.log( 'git:push' );
+
+    var git_add_all = spawn( "git", 
+	                      [ "push", "origin", "master" ], 
+						  { cwd: "/work/", env: process.env }
+						 );
+
+        git_add_all.on('error', function(err) {  
+			console.log( 'gtl:git:push(error) : ', err ); 
+		});
+
+        git_add_all.stderr.on('data', function(data) { 
+			console.log( 'gtl:git:push(stderr) : ' + data ); 
+		});
+        git_add_all.stdout.on('data', function(data) { 
+			console.log( 'gtl:git:push(stdout) : ' + data ); 
+		});
+
+        git_add_all.on('exit', function(status) {
+			
+            if( status === 0){
+				console.log( 'gtl:git:push success' );
+            } else {
+				console.log( 'gtl:git:push fail! code = ', status );
+			}
+			
+        });
+	
+})
+
 gulp.task('update', function() {
 	
 	console.log( 'gtl:update.' );
 	
-	runSequence( 'gtl:git:reset', 'gtl:git:pull',
-    function(){ 
-		console.log( 'gtl:update sucess.' );
+	runSequence( 'gtl:git:reset', 
+				 'gtl:git:pull',
+				function(){ 
+					console.log( 'gtl:update success.' );
+	});
+	
+});	
+
+gulp.task('push', function() {
+	
+	console.log( 'gtl:push.' );
+	
+	runSequence( 'gtl:git:add-all', 
+				 'gtl:git:commit-backup',  
+				 'gtl:git:commit-backup',
+				function(){ 
+					console.log( 'gtl:push success.' );
 	});
 	
 });	

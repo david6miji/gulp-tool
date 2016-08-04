@@ -14,7 +14,6 @@ gulp.task('reload', function() {
 	process.argv.forEach((val, index) => {
 		if( index > 1 )  {
 			argvs.push( val );
-			console.log(`${index}: ${val}`);
 		}
 	});
 	
@@ -85,7 +84,8 @@ var
 
 end_require= true;
 
-requireDir('./gulp_tasks');
+requireDir('./gulp_tasks', {recurse: true} );
+
 
 gulp.task('welcome', function() {
 	console.log( "welcome gulp-tool" );
@@ -98,6 +98,7 @@ gulp.task('test', function() {
 gulp.task('default', [
 
 	'welcome',
+	'testing',
 
 ]);
 

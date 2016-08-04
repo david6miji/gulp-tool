@@ -5,6 +5,7 @@ var
 
 	spawn 				= require('child_process').spawn,
     gulp				= require('gulp'),
+	runSequence 		= require('run-sequence'),
 	
 end_base_module;
 
@@ -86,8 +87,11 @@ gulp.task('gtl:git:pull', function() {
 gulp.task('update', function() {
 	
 	console.log( 'gtl:update.' );
-	gulp.start( 'gtl:git:reset' );
-	gulp.start( 'gtl:git:pull' );
+	
+	runSequence( 'gtl:git:reset', 'gtl:git:pull',
+    function(){ 
+		console.log( 'gtl:update sucess.' );
+	});
 	
 });
 

@@ -249,6 +249,19 @@ gulp.task('push', function() {
 	
 });	
 
+gulp.task('gtl:list-env', function() {
+	
+	console.log( 'gtl:list-env' );
+	
+//	runSequence( 'gtl:git:add-all', 
+//				 'gtl:git:commit-backup',  
+//				 'gtl:git:push',
+//				function(){ 
+//					console.log( 'gtl:push success.' );
+//	});
+	
+});	
+
 var 
 
 	requireDir 			= require('require-dir'),

@@ -21,11 +21,71 @@ gulp.task('reload', function() {
     process.exit();
 });
 
+gulp.task('git:reset', function() {
+	console.log( 'git:reset' );
+
+//    var git_reset = spawn( "git", 
+//	                      [ "reset", "--hard HEAD" ], 
+//						  { cwd: "/gulp-tool/", env: process.env }
+//						 );
+//	
+//        git_reset.on('error', function(err) {  
+//			console.log( 'git:reset(error) : ', err ); 
+//		});
+//
+//        npm.stderr.on('data', function(data) { 
+//			console.log( 'git:reset(stderr) : ' + data ); 
+//		});
+//        npm.stdout.on('data', function(data) { 
+//			console.log( 'git:reset(stdout) : ' + data ); 
+//		});
+//
+//        npm.on('exit', function(status) {
+//			
+//            if( status !== 0){
+//				console.log( 'npm install fail!' );
+//				console.log( 'please check gulp-tool package' );
+//            }
+//			
+//        });
+	
+})
+
+gulp.task('git:pull', function() {
+	console.log( 'git:pull' );
+
+//    var git_reset = spawn( "git", 
+//	                      [ "reset", "--hard HEAD" ], 
+//						  { cwd: "/gulp-tool/", env: process.env }
+//						 );
+//	
+//        git_reset.on('error', function(err) {  
+//			console.log( 'git:reset(error) : ', err ); 
+//		});
+//
+//        npm.stderr.on('data', function(data) { 
+//			console.log( 'git:reset(stderr) : ' + data ); 
+//		});
+//        npm.stdout.on('data', function(data) { 
+//			console.log( 'git:reset(stdout) : ' + data ); 
+//		});
+//
+//        npm.on('exit', function(status) {
+//			
+//            if( status !== 0){
+//				console.log( 'npm install fail!' );
+//				console.log( 'please check gulp-tool package' );
+//            }
+//			
+//        });
+	
+})
+
 gulp.task('update', function() {
 	
-	console.log( '-------------------------------------------------------------------' );
-	console.log( '>> run gulp-tool update.' );
-	console.log( '-------------------------------------------------------------------' );
+	console.log( 'gtl:update.' );
+	gulp.start( 'git:reset' );
+	gulp.start( 'git:pull' );
 	
 	// git reset --hard HEAD
 	// git pull

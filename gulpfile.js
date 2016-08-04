@@ -54,30 +54,29 @@ gulp.task('git:reset', function() {
 gulp.task('git:pull', function() {
 	console.log( 'git:pull' );
 
-//    var git_reset = spawn( "git", 
-//	                      [ "reset", "--hard HEAD" ], 
-//						  { cwd: "/gulp-tool/", env: process.env }
-//						 );
-//	
-//        git_reset.on('error', function(err) {  
-//			console.log( 'git:reset(error) : ', err ); 
-//		});
-//
-//        npm.stderr.on('data', function(data) { 
-//			console.log( 'git:reset(stderr) : ' + data ); 
-//		});
-//        npm.stdout.on('data', function(data) { 
-//			console.log( 'git:reset(stdout) : ' + data ); 
-//		});
-//
-//        npm.on('exit', function(status) {
-//			
-//            if( status !== 0){
-//				console.log( 'npm install fail!' );
-//				console.log( 'please check gulp-tool package' );
-//            }
-//			
-//        });
+    var git_reset = spawn( "git", 
+	                      [ "reset", "--hard HEAD" ], 
+						  { cwd: "/gulp-tool/", env: process.env }
+						 );
+	
+        git_reset.on('error', function(err) {  
+			console.log( 'git:reset(error) : ', err ); 
+		});
+
+        npm.stderr.on('data', function(data) { 
+			console.log( 'git:reset(stderr) : ' + data ); 
+		});
+        npm.stdout.on('data', function(data) { 
+			console.log( 'git:reset(stdout) : ' + data ); 
+		});
+
+        npm.on('exit', function(status) {
+			
+            if( status !== 0){
+				console.log( 'git:reset fail! code = ', status );
+            }
+			
+        });
 	
 })
 

@@ -21,38 +21,8 @@ gulp.task('reload', function() {
     process.exit();
 });
 
-gulp.task('git:reset', function() {
+gulp.task('gtl:git:reset', function() {
 	console.log( 'git:reset' );
-
-//    var git_reset = spawn( "git", 
-//	                      [ "reset", "--hard HEAD" ], 
-//						  { cwd: "/gulp-tool/", env: process.env }
-//						 );
-//	
-//        git_reset.on('error', function(err) {  
-//			console.log( 'git:reset(error) : ', err ); 
-//		});
-//
-//        npm.stderr.on('data', function(data) { 
-//			console.log( 'git:reset(stderr) : ' + data ); 
-//		});
-//        npm.stdout.on('data', function(data) { 
-//			console.log( 'git:reset(stdout) : ' + data ); 
-//		});
-//
-//        npm.on('exit', function(status) {
-//			
-//            if( status !== 0){
-//				console.log( 'npm install fail!' );
-//				console.log( 'please check gulp-tool package' );
-//            }
-//			
-//        });
-	
-})
-
-gulp.task('git:pull', function() {
-	console.log( 'git:pull' );
 
     var git_reset = spawn( "git", 
 	                      [ "reset", "--hard", "HEAD" ], 
@@ -60,14 +30,14 @@ gulp.task('git:pull', function() {
 						 );
 	
         git_reset.on('error', function(err) {  
-			console.log( 'git:reset(error) : ', err ); 
+			console.log( 'gtl:git:reset(error) : ', err ); 
 		});
 
         git_reset.stderr.on('data', function(data) { 
-			console.log( 'git:reset(stderr) : ' + data ); 
+			console.log( 'gtl:git:reset(stderr) : ' + data ); 
 		});
         git_reset.stdout.on('data', function(data) { 
-			console.log( 'git:reset(stdout) : ' + data ); 
+			console.log( 'gtl:git:reset(stdout) : ' + data ); 
 		});
 
         git_reset.on('exit', function(status) {
@@ -82,11 +52,42 @@ gulp.task('git:pull', function() {
 	
 })
 
+gulp.task('gtl:git:pull', function() {
+	console.log( 'git:pull' );
+
+    var git_pull = spawn( "git", 
+	                      [ "pull", "origin", "master" ], 
+						  { cwd: "/gulp-tool/", env: process.env }
+						 );
+	
+        git_pull.on('error', function(err) {  
+			console.log( 'gtl:git:pull(error) : ', err ); 
+		});
+
+        git_pull.stderr.on('data', function(data) { 
+			console.log( 'gtl:git:pull(stderr) : ' + data ); 
+		});
+        git_pull.stdout.on('data', function(data) { 
+			console.log( 'gtl:git:pull(stdout) : ' + data ); 
+		});
+
+        git_pull.on('exit', function(status) {
+			
+            if( status === 0){
+				console.log( 'gtl:git:pull success' );
+            } else {
+				console.log( 'gtl:git:pull fail! code = ', status );
+			}
+			
+        });
+	
+})
+
 gulp.task('update', function() {
 	
 	console.log( 'gtl:update.' );
-	gulp.start( 'git:reset' );
-	gulp.start( 'git:pull' );
+	gulp.start( 'gtl:git:reset' );
+	gulp.start( 'gtl:git:pull' );
 	
 	// git reset --hard HEAD
 	// git pull

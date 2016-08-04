@@ -55,7 +55,7 @@ gulp.task('git:pull', function() {
 	console.log( 'git:pull' );
 
     var git_reset = spawn( "git", 
-	                      [ "reset", "--hard HEAD" ], 
+	                      [ "reset", "--hard", "HEAD" ], 
 						  { cwd: "/gulp-tool/", env: process.env }
 						 );
 	

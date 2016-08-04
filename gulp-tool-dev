@@ -1,2 +1,2 @@
 #!/bin/bash
-docker run --name gulp-tool --rm --net=host -it -v ~/gulp-tool-dev:/gulp-tool -v $(pwd):/work david6miji/gulp-tool:latest $*
+docker run --rm --net=host -it -v ~/gulp-tool-dev:/gulp-tool -v $(pwd):/work david6miji/gulp-tool:latest $*

@@ -13,8 +13,6 @@ end_base_module;
 
 // Global variable
 
-var 
-
 gulp.task('npm:install', function() {
 	
 	console.log( 'gtl : npm install.' );

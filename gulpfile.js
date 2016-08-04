@@ -63,14 +63,14 @@ gulp.task('git:pull', function() {
 			console.log( 'git:reset(error) : ', err ); 
 		});
 
-        npm.stderr.on('data', function(data) { 
+        git_reset.stderr.on('data', function(data) { 
 			console.log( 'git:reset(stderr) : ' + data ); 
 		});
-        npm.stdout.on('data', function(data) { 
+        git_reset.stdout.on('data', function(data) { 
 			console.log( 'git:reset(stdout) : ' + data ); 
 		});
 
-        npm.on('exit', function(status) {
+        git_reset.on('exit', function(status) {
 			
             if( status === 0){
 				console.log( 'git:reset success' );

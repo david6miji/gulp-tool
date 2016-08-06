@@ -11,8 +11,14 @@ var
 	
 end_base_module;
 
-// Global variable
+// Global
 
+var
+
+	gl_env				= {};
+
+// default Tasks 
+	
 gulp.task('npm:install', function() {
 	
 	console.log( 'gtl : npm install.' );
@@ -274,6 +280,8 @@ var
 //	install 			= require("gulp-install"),
 
 end_require= true;
+
+requireDir('/gulp-env/' );
 
 requireDir('./gulp_tasks', {recurse: true} );
 

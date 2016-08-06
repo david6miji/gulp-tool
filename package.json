@@ -19,6 +19,8 @@
   "dependencies": {
     "commander": "^2.9.0",
     "gulp": "^3.9.1",
+    "gulp-install": "^0.6.0",
+    "gulp-load-plugins": "^1.2.4",
     "pty.js": "^0.3.1",
     "require-dir": "^0.3.0",
     "run-sequence": "^1.2.2"

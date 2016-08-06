@@ -7,8 +7,12 @@ var
 
 	spawn 				= require('child_process').spawn,
     gulp				= require('gulp'),
+	plugins 			= require('gulp-load-plugins')(),
+	install 			= require("gulp-install"),
 	
 end_base_module;
+
+
 
 // global var
 global.gt_env = {};
@@ -18,33 +22,34 @@ global.gt_env_name = "gulp-tool";
 gulp.task('npm:install', function() {
 	
 	console.log( 'gtl : npm install.' );
+	gulp.src([ __dirname + '/package.json']).pipe(install());
 
-    var npm = spawn( "npm", [ "install" ]);
-		
-        npm.on('error', function(err) {  
-			console.log( 'npm install(err) : ', err ); 
-		});
-
-        npm.stderr.on('data', function(data) { 
-			console.log( 'npm install : ' + data ); 
-		});
-        npm.stdout.on('data', function(data) { 
-			console.log( 'npm install : ' + data ); 
-		});
-
-        npm.on('exit', function(status) {
-			
-            if( status === 0){
-				console.log( 'npm install success!' );
-				console.log( 'please rerun gtl' );
-            } else {
-				console.log( 'npm install fail!' );
-				console.log( 'please check gulp-tool package' );
-            }
-			
-			process.exit(1)	;
-			
-        });
+//    var npm = spawn( "npm", [ "install" ]);
+//		
+//        npm.on('error', function(err) {  
+//			console.log( 'npm install(err) : ', err ); 
+//		});
+//
+//        npm.stderr.on('data', function(data) { 
+//			console.log( 'npm install : ' + data ); 
+//		});
+//        npm.stdout.on('data', function(data) { 
+//			console.log( 'npm install : ' + data ); 
+//		});
+//
+//        npm.on('exit', function(status) {
+//			
+//            if( status === 0){
+//				console.log( 'npm install success!' );
+//				console.log( 'please rerun gtl' );
+//            } else {
+//				console.log( 'npm install fail!' );
+//				console.log( 'please check gulp-tool package' );
+//            }
+//			
+//			process.exit(1)	;
+//			
+//        });
 		
 });
 
@@ -199,7 +204,7 @@ gulp.task('gtl:git:commit-backup', function() {
 	
 })
 
-var pty 				= require('pty');
+var pty 				= require('pty.js');
 
 gulp.task('gtl:git:push', function() {
 	console.log( 'git:push2' );
@@ -210,54 +215,39 @@ gulp.task('gtl:git:push', function() {
 								name: 'xterm-color',
 								cols: 80,
 								rows: 30,
-								cwd: process.env.HOME,
+								cwd: "/work/",
 								env: process.env
 							}
 	);
 	
+	var out_data = "";
+	
 	term.on('data', function(data) {
-		console.log( "term data : " + data );
-	});
-	
-	term.on('close', function(data) {
-		console.log("term close : " + data );
-	});
-	
 
-//     var git_push = spawn( "git", 
-// 	                      [ "push", "origin", "master" ], 
-// 						  { cwd: "/work/", 
-// 						    env: process.env , 
-// 						    stdio: ['pipe', 'pipe', process.stderr],
-// 						  }	
-// 							
-// 						 );
-// 
-//         git_push.on('error', function(err) {  
-// 			console.log( 'gtl:git:push(error) : ', err ); 
-// 		});
-// 
-//         git_push.stderr.on('data', function(data) { 
-// 			console.log( 'gtl:git:push(stderr) : [' + data + "]" ); 
-// 		});
-//         git_push.stdout.on('data', function(data) { 
-// 			console.log( 'gtl:git:push(stdout)' ); 
-// //			console.log( 'gtl:git:push(stdout) : [' + data + "]" ); 
-// 		});
-// 		git_push.stdout.on('end', function () {
-// 			console.log('Finished collecting data chunks.');
-// 		});
-// 		
-//         git_push.on('exit', function(status) {
-// 			
-//             if( status === 0){
-// 				console.log( 'gtl:git:push success' );
-//             } else {
-// 				console.log( 'gtl:git:push fail! code = ', status );
-// 			}
-// 			
-//         });
+		out_data += data;
 		
+		if( data.indexOf( "Username for" ) > -1 ) {
+			term.write( gt_env[gt_env_name].username + "\n");
+		}
+		
+		if( data.indexOf( "Password for" ) > -1 ) {
+			term.write( gt_env[gt_env_name].password + "\n");
+		}
+		
+	});
+	
+	term.on('close', function() {
+
+	});
+	
+	term.on('exit', function(code,signal) {
+
+		if( code !== 0 ){
+			console.log("term exit("+code+") out = " + out_data );
+		}
+		
+	});
+
 })
 
 gulp.task('update', function() {
@@ -275,14 +265,14 @@ gulp.task('update', function() {
 gulp.task('push', function() {
 	
 	console.log( 'gtl:push.' );
-	gulp.start( 'gtl:git:push' );
+//	gulp.start( 'gtl:git:push' );
 	
-//	runSequence( 'gtl:git:add-all', 
-//				 'gtl:git:commit-backup',  
-//				 'gtl:git:push',
-//				function(){ 
-//					console.log( 'gtl:push success.' );
-//	});
+	runSequence( 'gtl:git:add-all', 
+				 'gtl:git:commit-backup',  
+				 'gtl:git:push',
+				function(){ 
+					console.log( 'gtl:push success.' );
+	});
 	
 });	
 

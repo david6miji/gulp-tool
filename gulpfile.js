@@ -1,17 +1,7 @@
-// Global
-
-var
-
-	gt_env				= {},
-	gt_env_name         = "gulp-tool",
-	
-end_global_var;
-
 (function() {
 'use strict';
 
-console.log( __dirname );
-console.log( process.cwd() );
+console.log( "CALL gulpfile.js" );
 
 var 
 
@@ -20,9 +10,11 @@ var
 	
 end_base_module;
 
+// global var
+global.gt_env = {};
+global.gt_env_name = "gulp-tool";
 
 // default Tasks 
-	
 gulp.task('npm:install', function() {
 	
 	console.log( 'gtl : npm install.' );
@@ -207,35 +199,65 @@ gulp.task('gtl:git:commit-backup', function() {
 	
 })
 
+var pty 				= require('pty');
+
 gulp.task('gtl:git:push', function() {
-	console.log( 'git:push' );
-
-    var git_add_all = spawn( "git", 
-	                      [ "push", "origin", "master" ], 
-						  { cwd: "/work/", env: process.env }
-						 );
-
-        git_add_all.on('error', function(err) {  
-			console.log( 'gtl:git:push(error) : ', err ); 
-		});
-
-        git_add_all.stderr.on('data', function(data) { 
-			console.log( 'gtl:git:push(stderr) : ' + data ); 
-		});
-        git_add_all.stdout.on('data', function(data) { 
-			console.log( 'gtl:git:push(stdout) : ' + data ); 
-		});
-
-        git_add_all.on('exit', function(status) {
-			
-            if( status === 0){
-				console.log( 'gtl:git:push success' );
-            } else {
-				console.log( 'gtl:git:push fail! code = ', status );
-			}
-			
-        });
+	console.log( 'git:push2' );
 	
+	var term = pty.spawn(	"git", 
+						  	[ "push", "origin", "master" ],
+							{
+								name: 'xterm-color',
+								cols: 80,
+								rows: 30,
+								cwd: process.env.HOME,
+								env: process.env
+							}
+	);
+	
+	term.on('data', function(data) {
+		console.log( "term data : " + data );
+	});
+	
+	term.on('close', function(data) {
+		console.log("term close : " + data );
+	});
+	
+
+//     var git_push = spawn( "git", 
+// 	                      [ "push", "origin", "master" ], 
+// 						  { cwd: "/work/", 
+// 						    env: process.env , 
+// 						    stdio: ['pipe', 'pipe', process.stderr],
+// 						  }	
+// 							
+// 						 );
+// 
+//         git_push.on('error', function(err) {  
+// 			console.log( 'gtl:git:push(error) : ', err ); 
+// 		});
+// 
+//         git_push.stderr.on('data', function(data) { 
+// 			console.log( 'gtl:git:push(stderr) : [' + data + "]" ); 
+// 		});
+//         git_push.stdout.on('data', function(data) { 
+// 			console.log( 'gtl:git:push(stdout)' ); 
+// //			console.log( 'gtl:git:push(stdout) : [' + data + "]" ); 
+// 		});
+// 		git_push.stdout.on('end', function () {
+// 			console.log('Finished collecting data chunks.');
+// 		});
+// 		
+//         git_push.on('exit', function(status) {
+// 			
+//             if( status === 0){
+// 				console.log( 'gtl:git:push success' );
+//             } else {
+// 				console.log( 'gtl:git:push fail! code = ', status );
+// 			}
+// 			
+//         });
+		
 })
 
 gulp.task('update', function() {
@@ -253,13 +275,14 @@ gulp.task('update', function() {
 gulp.task('push', function() {
 	
 	console.log( 'gtl:push.' );
+	gulp.start( 'gtl:git:push' );
 	
-	runSequence( 'gtl:git:add-all', 
-				 'gtl:git:commit-backup',  
-				 'gtl:git:push',
-				function(){ 
-					console.log( 'gtl:push success.' );
-	});
+//	runSequence( 'gtl:git:add-all', 
+//				 'gtl:git:commit-backup',  
+//				 'gtl:git:push',
+//				function(){ 
+//					console.log( 'gtl:push success.' );
+//	});
 	
 });	
 
@@ -279,16 +302,13 @@ gulp.task('gtl:list-env', function() {
 var 
 
 	requireDir 			= require('require-dir'),
-	
-	
 //	install 			= require("gulp-install"),
 
 end_require= true;
 
 requireDir('/gulp-env/' );
 
-// console.log( "gulp-tool env= ", gt_env[gt_env_name] );
-console.log( "gulp-tool env = ", gt_env[gt_env_name] );
+console.log( "gulp-tool env= ", gt_env[gt_env_name] );
 
 requireDir('./gulp_tasks', {recurse: true} );
 

@@ -23,33 +23,6 @@ gulp.task('npm:install', function() {
 	
 	console.log( 'gtl : npm install.' );
 	gulp.src([ __dirname + '/package.json']).pipe(install());
-
-//    var npm = spawn( "npm", [ "install" ]);
-//		
-//        npm.on('error', function(err) {  
-//			console.log( 'npm install(err) : ', err ); 
-//		});
-//
-//        npm.stderr.on('data', function(data) { 
-//			console.log( 'npm install : ' + data ); 
-//		});
-//        npm.stdout.on('data', function(data) { 
-//			console.log( 'npm install : ' + data ); 
-//		});
-//
-//        npm.on('exit', function(status) {
-//			
-//            if( status === 0){
-//				console.log( 'npm install success!' );
-//				console.log( 'please rerun gtl' );
-//            } else {
-//				console.log( 'npm install fail!' );
-//				console.log( 'please check gulp-tool package' );
-//            }
-//			
-//			process.exit(1)	;
-//			
-//        });
 		
 });
 

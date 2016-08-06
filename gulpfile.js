@@ -1,3 +1,12 @@
+// Global
+
+var
+
+	gt_env				= {},
+	gt_env_name         = "gulp-tool",
+	
+end_global_var;
+
 (function() {
 'use strict';
 
@@ -11,11 +20,6 @@ var
 	
 end_base_module;
 
-// Global
-
-var
-
-	gl_env				= {};
 
 // default Tasks 
 	
@@ -282,6 +286,9 @@ var
 end_require= true;
 
 requireDir('/gulp-env/' );
+
+// console.log( "gulp-tool env= ", gt_env[gt_env_name] );
+console.log( "gulp-tool env = ", gt_env[gt_env_name] );
 
 requireDir('./gulp_tasks', {recurse: true} );
 

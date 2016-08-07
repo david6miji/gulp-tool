@@ -90,8 +90,6 @@ gulp.task( 'gt:git:push', function(done) {
 gulp.task('gt:push', 
 	gulp.series( 
 	
-		'gt:dumy',
-		
 		function(done) {
 			console.log( 'RUN gt:push' );
 			done();
@@ -119,45 +117,38 @@ gulp.task('gt:push',
 	)
 );
 
-// gulp.task('gt:update', function(done) {
-// 	
-// 	console.log( "CALL gt:update" );
-// 	
-//  	gulp.series( 'gt:git:reset',
-//  				 'gt:git:pull',
-//  				 
-//  	function(done) {
-//  		console.log( 'gt:update success.' );
-//  		done();
-//  	});
-// 
-// });	
+gulp.task('gt:update', 
+	gulp.series( 
+	
+		function(done) {
+			console.log( 'RUN gt:update' );
+			done();
+		}, 
+	
+		shell.task( ['git reset --hard HEAD'], 
+		            { verbose : true , 
+					  cwd : "/gulp-tool/"  
+					} 
+				  ),
 
+		shell.task( ['git pull origin master'], 
+		            { verbose : true , 
+					  cwd : "/gulp-tool/"  
+					} 
+				  ),
+				  
+		function(done) {
+			console.log( 'gt:update success.' );
+			done();
+		}
 
-
-
-// function(done) {
-// 	console.log( "CALL gt:push" );
-// 	return gulp.series( 
-// //				  'gt:git:add-all',
-// //				  'gt:git:commit-backup',
-// //				  'gt:git:push',
-// 				 
-// 	function(done) {
-// 		console.log( 'gt:push success.' );
-// 		done();
-// 	});
-// 				 
-// });	
+	)
+);	
 
 gulp.task('default', function(done) {
 
 	console.log( "welcome gulp-tool" );
-//	gulp.series( clean, gulp.parallel(styles, scripts));
 	done();
 
 });
-
-
-
 

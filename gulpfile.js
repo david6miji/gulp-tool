@@ -20,10 +20,16 @@ process.on('uncaughtException', function(error) {
 	 
 });
 
+// global var
+
+	global.gt_env 		= {};
+	global.gt_env_name 	= "gulp-tool";
+
 var 
 
     pty 				= require('pty.js'),
 	shell 				= require('gulp-shell'),
+	requireDir 			= require('require-dir'),
 	
 end_module;
 

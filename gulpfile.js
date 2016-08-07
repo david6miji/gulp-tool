@@ -98,11 +98,16 @@ gulp.task('gt:push',
 		}, 
 		
 		shell.task( ['git add --all'], 
-		            { verbose : true , cwd : "/gulp-tool/"  } 
+		            { verbose : true , 
+					  cwd : "/gulp-tool/"  
+					} 
 				  ),
 				  
 		shell.task( ['git commit -a -m "backup"'], 
-		            { verbose : true , cwd : "/gulp-tool/"  } 
+		            { verbose : true , 
+					  cwd : "/gulp-tool/", 
+					  ignoreErrors : true  
+					} 
 				  ),
 				  
 		'gt:git:push',		  

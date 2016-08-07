@@ -82,6 +82,7 @@ gulp.task( 'gt:git:push', function(done) {
 			console.log("term exit("+code+") out = " + out_data );
 		}
 		
+		done();
 	});
 
 })

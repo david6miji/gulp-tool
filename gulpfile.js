@@ -48,11 +48,6 @@ gulp.task('gt:dumy', function(done) {
 
 });
 
-// gulp.task('gt:git:add-all', shell.task([
-//   'echo hello',
-//   'echo world'
-// ]))
-
 gulp.task('gt:push', 
 	gulp.series( 
 	

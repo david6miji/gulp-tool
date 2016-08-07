@@ -45,6 +45,47 @@ gulp.task('gt:dumy', function(done) {
 
 });
 
+gulp.task( 'gt:git:push', function(done) {
+	
+	console.log( 'CALL git:push' );
+	
+	var term = pty.spawn(	"git", 
+						  	[ "push", "origin", "master" ],
+							{
+								cwd: "/gulp-tool/",
+								env: process.env,
+								name: 'xterm-color', cols: 80, rows: 30,
+							}
+	);
+	
+	var out_data = "";
+	
+	term.on('data', function(data) {
+
+		out_data += data;
+		
+		if( data.indexOf( "Username for" ) > -1 ) {
+			term.write( gt_env[gt_env_name].username + "\n");
+		}
+		
+		if( data.indexOf( "Password for" ) > -1 ) {
+			term.write( gt_env[gt_env_name].password + "\n");
+		}
+		
+	});
+	
+	term.on('close', function() {	});
+	
+	term.on('exit', function(code,signal) {
+
+		if( code !== 0 ){
+			console.log("term exit("+code+") out = " + out_data );
+		}
+		
+	});
+
+})
+
 gulp.task('gt:push', 
 	gulp.series( 
 	
@@ -62,6 +103,8 @@ gulp.task('gt:push',
 		shell.task( ['git commit -a -m "backup"'], 
 		            { verbose : true , cwd : "/gulp-tool/"  } 
 				  ),
+				  
+		'gt:git:push',		  
 				  
 		function(done) {
 			console.log( 'gt:push success.' );

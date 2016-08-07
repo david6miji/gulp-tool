@@ -33,20 +33,11 @@ var
 	
 end_module;
 
-// gulp.task('gt:update', function(done) {
-// 	
-// 	console.log( "CALL gt:update" );
-// 	
-//  	gulp.series( 'gt:git:reset',
-//  				 'gt:git:pull',
-//  				 
-//  	function(done) {
-//  		console.log( 'gt:update success.' );
-//  		done();
-//  	});
-// 
-// });	
+//  ENV Load
 
+	requireDir('/gulp-env/' );
+
+	
 gulp.task('gt:dumy', function(done) {
 
 	console.log( "CALL dumy task" );
@@ -78,6 +69,20 @@ gulp.task('gt:push',
 		}
 	)
 );
+
+// gulp.task('gt:update', function(done) {
+// 	
+// 	console.log( "CALL gt:update" );
+// 	
+//  	gulp.series( 'gt:git:reset',
+//  				 'gt:git:pull',
+//  				 
+//  	function(done) {
+//  		console.log( 'gt:update success.' );
+//  		done();
+//  	});
+// 
+// });	
 
 
 

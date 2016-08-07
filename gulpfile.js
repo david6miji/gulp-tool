@@ -5,6 +5,7 @@ console.log( "CALL gulpfile.js" );
 var 
 
     gulp				= require('gulp'),
+	plugins 			= require('gulp-load-plugins')(),
 	install 			= require("gulp-install"),
 	
 end_base_module;

@@ -1,0 +1,7 @@
+#!/bin/bash
+docker run --rm --net=host -it \
+       -v ~/gulp-tool:/gulp-tool \
+       -v ~/gulp-env:/gulp-env \
+	   -v $(pwd):/work \
+	   david6miji/simavr:latest \
+	   $*

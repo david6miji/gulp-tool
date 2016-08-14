@@ -4,6 +4,7 @@ var
 	
 end_require= true;
 
+console.log( "hello ..." );
 gulp.task('docker:pull:david6miji', function() {
 	
 	console.log( '-------------------------------------------------------------------' );

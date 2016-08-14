@@ -5,7 +5,7 @@ var
 	
 end_require= true;
 
-gulp.task('docker-pull-david6miji', function(done) {
+gulp.task('docker-pull-david6miji', 
 	gulp.series( 
 	
 		function(done) {
@@ -26,6 +26,5 @@ gulp.task('docker-pull-david6miji', function(done) {
 		}
 
 	)
-	
-});
+);
 

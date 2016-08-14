@@ -146,6 +146,10 @@ gulp.task('gt:update',
 	)
 );	
 
+//  User Task
+
+	requireDir( __dirname + '/gulp_tasks/' );
+
 gulp.task('default', function(done) {
 
 	console.log( "welcome gulp-tool" );

@@ -15,17 +15,17 @@ gulp.task('docker-pull-david6miji',
 		gulp.parallel( 
 	
 			shell.task( ['docker pull david6miji/gulp-kor']	, 
-						{ verbose : true }),
+						{ verbose : true, ignoreErrors : true }),
 			shell.task( ['docker pull david6miji/gulp-tool'], 
-						{ verbose : true }),
+						{ verbose : true, ignoreErrors : true }),
 			shell.task( ['docker pull david6miji/mongodb']	, 
-						{ verbose : true }),
+						{ verbose : true, ignoreErrors : true }),
 			shell.task( ['docker pull david6miji/loopback']	, 
-						{ verbose : true }),
+						{ verbose : true, ignoreErrors : true }),
 			shell.task( ['docker pull david6miji/simavr']	, 
-						{ verbose : true }),
+						{ verbose : true, ignoreErrors : true }),
 			shell.task( ['docker pull david6miji/hipo']		, 
-						{ verbose : true })
+						{ verbose : true, ignoreErrors : true })
 
 		),
 				  

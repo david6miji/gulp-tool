@@ -1,6 +1,7 @@
 var 
 
     gulp				= require('gulp'),
+	shell 				= require('gulp-shell'),
 	
 end_require= true;
 

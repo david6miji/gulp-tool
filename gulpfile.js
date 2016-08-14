@@ -148,7 +148,7 @@ gulp.task('gt:update',
 
 //  User Task
 
-	requireDir( __dirname + '/gulp_tasks/' );
+	requireDir( __dirname + '/gulp_tasks/', {recurse: true} );
 
 gulp.task('default', function(done) {
 

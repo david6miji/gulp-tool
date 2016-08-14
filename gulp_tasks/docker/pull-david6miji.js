@@ -4,7 +4,7 @@ var
 	
 end_require= true;
 
-gulp.task('docker:pull:david6miji', function(done) {
+gulp.task('docker-pull-david6miji', function(done) {
 	gulp.series( 
 	
 		function(done) {

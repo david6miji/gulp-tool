@@ -27,6 +27,5 @@ gulp.task('docker-pull-david6miji', function(done) {
 
 	)
 	
-	done();
 });
 

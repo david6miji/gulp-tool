@@ -4,6 +4,7 @@ var
 	
 end_require= true;
 
+console.log( "CALL TEST SUBDIR/TASK" );
 gulp.task('testing', function() {
 	
 	console.log( '-------------------------------------------------------------------' );

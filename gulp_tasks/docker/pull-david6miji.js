@@ -5,14 +5,27 @@ var
 end_require= true;
 
 gulp.task('docker:pull:david6miji', function(done) {
+	gulp.series( 
 	
-	console.log( '-------------------------------------------------------------------' );
-	console.log( '>> docker pull david6miji.' );
-	console.log( '-------------------------------------------------------------------' );
+		function(done) {
+			console.log( 'docker pull for david6miji' );
+			done();
+		}, 
 	
-	// git reset --hard HEAD
-	// git pull
-	// 
+		shell.task( ['docker pull david6miji/gulp-kor']	, { verbose : true }),
+		shell.task( ['docker pull david6miji/gulp-tool'], { verbose : true }),
+		shell.task( ['docker pull david6miji/mongodb']	, { verbose : true }),
+		shell.task( ['docker pull david6miji/loopback']	, { verbose : true }),
+		shell.task( ['docker pull david6miji/simavr']	, { verbose : true }),
+		shell.task( ['docker pull david6miji/hipo']		, { verbose : true }),
+				  
+		function(done) {
+			console.log( 'docker pull for david6miji : success.' );
+			done();
+		}
+
+	)
+	
 	done();
 });
 

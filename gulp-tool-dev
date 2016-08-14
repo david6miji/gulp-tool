@@ -3,5 +3,6 @@ cd /tmp/
 docker run --rm --net=host -it \
        -v ~/gulp-tool-dev:/gulp-tool \
        -v ~/gulp-env:/gulp-env \
+	   -v /var/run/docker.sock:/var/run/docker.sock \
 	   david6miji/gulp-tool:latest \
 	   $*

@@ -4,8 +4,7 @@ var
 	
 end_require= true;
 
-console.log( "CALL TEST SUBDIR/TASK" );
-gulp.task('testing', function() {
+gulp.task('testing', function(done) {
 	
 	console.log( '-------------------------------------------------------------------' );
 	console.log( '>> run testing.' );
@@ -14,6 +13,6 @@ gulp.task('testing', function() {
 	// git reset --hard HEAD
 	// git pull
 	// 
-	
+	done();
 });
 

@@ -4,8 +4,7 @@ var
 	
 end_require= true;
 
-console.log( "hello ..." );
-gulp.task('docker:pull:david6miji', function() {
+gulp.task('docker:pull:david6miji', function(done) {
 	
 	console.log( '-------------------------------------------------------------------' );
 	console.log( '>> docker pull david6miji.' );
@@ -14,6 +13,6 @@ gulp.task('docker:pull:david6miji', function() {
 	// git reset --hard HEAD
 	// git pull
 	// 
-	
+	done();
 });
 

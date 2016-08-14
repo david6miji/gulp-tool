@@ -12,13 +12,22 @@ gulp.task('docker-pull-david6miji',
 			console.log( 'docker pull for david6miji' );
 			done();
 		}, 
+		gulp.parallel( 
 	
-		shell.task( ['docker pull david6miji/gulp-kor']	, { verbose : true }),
-		shell.task( ['docker pull david6miji/gulp-tool'], { verbose : true }),
-		shell.task( ['docker pull david6miji/mongodb']	, { verbose : true }),
-		shell.task( ['docker pull david6miji/loopback']	, { verbose : true }),
-		shell.task( ['docker pull david6miji/simavr']	, { verbose : true }),
-		shell.task( ['docker pull david6miji/hipo']		, { verbose : true }),
+			shell.task( ['docker pull david6miji/gulp-kor']	, 
+						{ verbose : true }),
+			shell.task( ['docker pull david6miji/gulp-tool'], 
+						{ verbose : true }),
+			shell.task( ['docker pull david6miji/mongodb']	, 
+						{ verbose : true }),
+			shell.task( ['docker pull david6miji/loopback']	, 
+						{ verbose : true }),
+			shell.task( ['docker pull david6miji/simavr']	, 
+						{ verbose : true }),
+			shell.task( ['docker pull david6miji/hipo']		, 
+						{ verbose : true })
+
+		),
 				  
 		function(done) {
 			console.log( 'docker pull for david6miji : success.' );

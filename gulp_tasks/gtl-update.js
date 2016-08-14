@@ -4,6 +4,7 @@ var
 	
 end_require= true;
 
+console.log( "CALL TEST TASK" );
 gulp.task('update-test', function() {
 	
 	console.log( '-------------------------------------------------------------------' );

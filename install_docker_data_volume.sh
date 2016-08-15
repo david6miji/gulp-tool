@@ -1,5 +1,4 @@
 #!/bin/bash
-mkdir -p ~/gulp-tool/
 mkdir -p ~/gulp-env/
 
 docker rm gulp-tool-dir

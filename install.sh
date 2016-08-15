@@ -1,3 +1,3 @@
 #!/bin/bash
-./install_cms.sh
+./install_cmd.sh
 gulp-tool "npm install"

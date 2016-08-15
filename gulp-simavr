@@ -1,8 +1,6 @@
 #!/bin/bash
 docker run --rm --net=host -it \
-       -v ~/gulp-tool:/gulp-tool \
-       -v ~/gulp-env:/gulp-env \
-	   -v /var/run/docker.sock:/var/run/docker.sock \
+--volumes-from gulp-tool-data \
 	   -v $(pwd):/work \
 	   david6miji/simavr:latest \
 	   $*

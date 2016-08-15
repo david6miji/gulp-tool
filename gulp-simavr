@@ -1,6 +1,6 @@
 #!/bin/bash
 docker run --rm --net=host -it \
---volumes-from gulp-tool-data \
+--volumes-from gulp-tool-dir \
 	   -v $(pwd):/work \
 	   david6miji/simavr:latest \
 	   $*

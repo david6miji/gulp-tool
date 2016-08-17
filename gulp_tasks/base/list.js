@@ -8,7 +8,8 @@ end_require= true;
 gulp.task('list', function(done) {
 	
 	console.log( "CALL list" );
-	console.log( taskListing );
+	gulp.series(taskListing );
+	console.log( 
 	taskListing();
 //	taskListing );
 

@@ -9,7 +9,7 @@ gulp.task('list', function(done) {
 	
 	console.log( "CALL list" );
 	console.log( taskListing );
-//	taskListing();
+	taskListing();
 //	taskListing );
 
 	done();

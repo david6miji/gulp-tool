@@ -5,11 +5,27 @@ var
 	
 end_require= true;
 
-gulp.task('list', function(done) {
+// gulp.task('list', function(done) {
+// 	
+// 	console.log( "CALL list" );
+// //	taskListing );
+// 
+// 	done();
+// });
+
+gulp.task('list', 
+	gulp.series(
+		function(done) {
+			console.log( 'wellcome list' );
+			done();
+		}, 
+		
+	taskListing,
 	
-	console.log( "CALL list" );
-//	taskListing );
-
-	done();
-});
-
+	function(done) {
+			console.log( 'list : success.' );
+			done();
+		}
+		
+	)
+);

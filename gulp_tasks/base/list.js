@@ -13,11 +13,13 @@ gulp.task('list', function(done) {
 	console.log( gulp._registry ); // .DefaultRegistry._tasks
 	console.log( gulp._registry._tasks ); // ._tasks
 	
-	var list = [];
+//	var list = [];
 	
-	for( k,v in gulp._registry._tasks ){
-		console.log( k );
-	}
+	console.log(Object.keys(obj));
+	
+//	for( k,v in gulp._registry._tasks ){
+//		console.log( k );
+//	}
 	
 //	gulp.series( taskListing );
 //	var taskList = gulp.tasks;

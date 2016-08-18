@@ -5,11 +5,13 @@ var
 	
 end_require= true;
 
+// 실패 함 
+
 gulp.task('list', function(done) {
 	
 	console.log( "CALL list" );
-	gulp.series(taskListing );
-	console.log( 
+	gulp.series( taskListing );
+//	console.log( 
 	taskListing();
 //	taskListing );
 

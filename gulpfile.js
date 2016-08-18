@@ -96,6 +96,18 @@ gulp.task('gt:push',
 			done();
 		}, 
 		
+		shell.task( ['git config --global user.name "' + gt_env[gt_env_name].github.username + '"' ], 
+		            { verbose : true , 
+					  cwd : "/gulp-tool/"  
+					} 
+				  ),
+
+		shell.task( ['git config --global user.email "' + gt_env[gt_env_name].github.email + '"' ], 
+		            { verbose : true , 
+					  cwd : "/gulp-tool/"  
+					} 
+				  ),
+				  
 		shell.task( ['git add --all'], 
 		            { verbose : true , 
 					  cwd : "/gulp-tool/"  

@@ -10,7 +10,7 @@ end_require= true;
 gulp.task('list', function(done) {
 	
 	console.log( "CALL list" );
-	console.log( gulp );
+	console.log( gulp._registry );
 	
 //	gulp.series( taskListing );
 //	var taskList = gulp.tasks;

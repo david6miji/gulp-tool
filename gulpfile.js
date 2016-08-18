@@ -53,7 +53,7 @@ gulp.task( 'gt:git:push', function(done) {
 	var term = pty.spawn(	"git", 
 						  	[ "push", "origin", "master" ],
 							{
-								cwd: "/gulp-tool/",
+								cwd: "/work/",
 								env: process.env,
 								name: 'xterm-color', cols: 80, rows: 30,
 							}

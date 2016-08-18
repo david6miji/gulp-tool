@@ -11,6 +11,7 @@ gulp.task('list', function(done) {
 	
 	console.log( "CALL list" );
 	console.log( gulp._registry ); // .DefaultRegistry._tasks
+	console.log( gulp._registry.DefaultRegistry ); // ._tasks
 	
 //	gulp.series( taskListing );
 //	var taskList = gulp.tasks;

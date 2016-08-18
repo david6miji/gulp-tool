@@ -1,7 +1,6 @@
 var 
 
     gulp				= require('gulp'),
-	taskListing 		= require('gulp-task-listing'),
 	
 end_require= true;
 
@@ -9,44 +8,13 @@ end_require= true;
 
 gulp.task('list', function(done) {
 	
-	console.log( "CALL list" );
-	console.log( gulp._registry ); // .DefaultRegistry._tasks
-	console.log( gulp._registry._tasks ); // ._tasks
+	console.log( "gulp-tool list" );
 	
-//	var list = [];
+	var list = Object.keys(gulp._registry._tasks);
 	
-	console.log(Object.keys(obj));
+	list.forEach(function (element, index, array) {
+		console.log( "    " + element );
+	});
 	
-//	for( k,v in gulp._registry._tasks ){
-//		console.log( k );
-//	}
-	
-//	gulp.series( taskListing );
-//	var taskList = gulp.tasks;
-//	console.log( taskList );
-	
-//	console.log( 
-//	taskListing();
-//	taskListing );
-
 	done();
 });
-
-
-
-// gulp.task('list', 
-// 	gulp.series(
-// 		function(done) {
-// 			console.log( 'wellcome list' );
-// 			done();
-// 		}, 
-// 		
-// 	taskListing,
-// 	
-// 	function(done) {
-// 			console.log( 'list : success.' );
-// 			done();
-// 		}
-// 		
-// 	)
-// );

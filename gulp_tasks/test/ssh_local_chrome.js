@@ -20,7 +20,9 @@ gulp.task('ssh_local_chrome', function(done) {
 	
 	console.log( config );
 	
-	gulpSSH.shell(['export DISPLAY=:0', 'google-chrome']);
+	var gs = new gulpSSH({  ignoreErrors: false,  sshConfig: config });
+
+	gs.shell(['export DISPLAY=:0', 'google-chrome']);
 	
 	done();
 });

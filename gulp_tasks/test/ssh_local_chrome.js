@@ -19,7 +19,7 @@ gulp.task('ssh_local_chrome', function(done) {
 	}	
 	
 	var gs = new gulpSSH({  ignoreErrors: false,  sshConfig: config });
-	var out = gs.shell(['export DISPLAY=:0', 'google-chrome']);
+	var out = gs.shell(['export DISPLAY=:0', 'google-chrome2']);
 	out.on('ssh_local_chrome : ssh2Data', function (chunk) {
 		console.log( "ssh2Data : ", ssh2Data );
 		

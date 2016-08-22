@@ -18,11 +18,16 @@ gulp.task('ssh_local_chrome', function(done) {
 	  password: gt_env[gt_env_name].host.ssh.password,
 	}	
 	
-	console.log( config );
-	
 	var gs = new gulpSSH({  ignoreErrors: false,  sshConfig: config });
-
-	gs.shell(['export DISPLAY=:0', 'google-chrome']);
+	var out = gs.shell(['export DISPLAY=:0', 'google-chrome']);
+	out.on('ssh_local_chrome : ssh2Data', function (chunk) {
+		console.log( "ssh2Data : ", ssh2Data );
+		
+	});
+	out.on('ssh_local_chrome : error', function (error) {
+		console.log( "error : ", error );
+		
+	});
 	
 	done();
 });

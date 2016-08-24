@@ -38,6 +38,9 @@ end_module;
 
 	requireDir('/gulp-env/' );
 
+// Librury Load	
+
+	requireDir( __dirname + '/lib/', {recurse: true} );	
 	
 gulp.task('gt:dumy', function(done) {
 
@@ -165,7 +168,7 @@ gulp.task('gt:update',
 
 gulp.task('default', function(done) {
 
-	console.log( "welcome gulp-tool" );
+	console.log( "welcome gulp-tool v0.1" );
 	done();
 
 });

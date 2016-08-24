@@ -10,7 +10,7 @@ gulp.task('list', function(done) {
 	
 	console.log( "gulp-tool list" );
 	
-	var list = Object.keys(gulp._registry._tasks);
+	var list = gulp.tree().nodes;
 	
 	list.forEach(function (element, index, array) {
 		console.log( "    " + element );

@@ -1,7 +1,7 @@
 var
 
     gulp				= require('gulp'),
-	SSHScript			= require(__dirname + '/../../lib/test.js'),
+	SSHScript			= require(__dirname + '/../../lib/ssh_script.js'),
 
 end_require= true;
 
@@ -23,12 +23,12 @@ gulp.task('test_ssh_script', function(done) {
     .shell      ()
         .wait       ('frog@withme2020:~$')
 //        .wait       ('frog@withme2020:~$', timeout, function)
-        .input      ('ls -al\n')
+        .input_ln   ('ls -al')
         .wait       ('frog@withme2020:~$')
 //        .is_error    ( function )
-        .input      ('pppsdfksdjf\n')
+        .input_ln   ('pppsdfksdjf')
         .wait       ('frog@withme2020:~$')
-        .input      ('exit\n')
+        .input_ln   ('exit')
 //        .run        ('pwd')
 //        .run        ('cd ~/gulp-tool/')
 //        .run        ('pwd')

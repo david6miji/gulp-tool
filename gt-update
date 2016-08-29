@@ -1,3 +1,4 @@
 #!/bin/bash
+source /gulp-env/gulp-tool-pre.sh
 gulp $GULP_TOOL_SILENT --gulpfile /gulp-tool/gulpfile.js gt:update
 

@@ -1,18 +1,24 @@
 var 
 
     gulp				= require('gulp'),
-	shell 				= require('gulp-shell'),
+	fs 					= require('fs'),
 	
 end_require= true;
-
-// 실패 함 
 
 gulp.task('logon', function(done) {
 	
 	console.log( "gulp-tool logon" );
-	gulp.series( 
-//		shell.task( ['export GULP_TOOL_SILENT="AAA"'], { verbose : true  }  )
-	)();
 	
+	var script_name = "/gulp-env/gulp-tool-silent.sh"
+	var script_text = '#!/bin/bash\n'
+	                + 'export GULP_TOOL_SILENT=""\n'
+					;
+	
+	fs.writeFile(script_name, script_text, function(err) {
+		if(err) {
+			return console.log(err);
+		}
+	});
+
 	done();
 });

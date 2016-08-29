@@ -14,7 +14,7 @@ gulp.task('logon', function(done) {
 	                + 'export GULP_TOOL_SILENT=""\n'
 					;
 	
-	fs.writeFile(script_name, script_text, function(err) {
+	fs.writeFile( script_name, script_text, function(err) {
 		if(err) {
 			return console.log(err);
 		}

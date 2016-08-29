@@ -14,7 +14,7 @@ gulp.task('logoff', function(done) {
 	                + 'export GULP_TOOL_SILENT="-S"\n'
 					;
 	
-	fs.writeFile("/tmp/test", script_text, function(err) {
+	fs.writeFile( script_name, script_text, function(err) {
 		if(err) {
 			return console.log(err);
 		}

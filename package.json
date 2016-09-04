@@ -24,6 +24,7 @@
     "gulp-shell": "^0.5.2",
     "gulp-ssh": "^0.6.0",
     "gulp-util": "^3.0.7",
+    "nedb": "^1.8.0",
     "open": "0.0.5",
     "pty.js": "^0.3.1",
     "require-dir": "^0.3.0",

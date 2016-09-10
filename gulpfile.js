@@ -3,7 +3,8 @@
 console.log( "CALL gulpfile.js" );
 
 var 
-
+	os					= require('os'),
+	path				= require('path'),
     gulp				= require('gulp'),
 	plugins 			= require('gulp-load-plugins')(),
 	install 			= require("gulp-install"),
@@ -20,6 +21,12 @@ process.on('uncaughtException', function(error) {
 	}	
 	 
 });
+
+//
+// First of all, codes as below have to excute 
+// Check /gulp-env/local_host_info.js
+// if it is not then it will be created
+// after get the username, password of local host 
 
 // global var
 
@@ -38,7 +45,7 @@ end_module;
 
 	requireDir('/gulp-env/' );
 
-// Librury Load	
+// Library Load	
 
 	requireDir( __dirname + '/lib/', {recurse: true} );	
 	

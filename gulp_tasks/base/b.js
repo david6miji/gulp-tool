@@ -15,25 +15,19 @@ gulp.task('b', function(done) {
 	var env_name = 'gulp-tool';
 	script
     .begin()
-		.ip			( gt_env[env_name].host.ssh.ip )
-		.port		( gt_env[env_name].host.ssh.port )
+		.ip			( gt_env[env_name].host.ssh.ip       )
+		.port		( gt_env[env_name].host.ssh.port     )
 		.username   ( gt_env[env_name].host.ssh.username )
 		.password   ( gt_env[env_name].host.ssh.password )
-	.connect    ()
-    .shell      ()
-        .input_ln   ('echo gool-tool:enter host login')
-        .wait       ('gool-tool:enter host login')
-        .wait       ('$ ')
-        .input_ln   ('export DISPLAY=:0')
-        .input_ln   ('echo gool-tool:enter host login')
-        .wait       ('gool-tool:enter host login')
-        .wait       ('$ ')
-        .input_ln   ('sensible-browser www.falinux.com &')
-        .input_ln   ('echo gool-tool:enter host login')
-        .wait       ('gool-tool:enter host login')
-        .wait       ('$ ')
-        .input_ln   ('exit')
+		.prompt		( gt_env[env_name].host.ssh.prompt   ) 
+	.connect()
+    .shell()
+		.ready()
+		
+		.cmd		( 'export DISPLAY=:0' )
+		.cmd		( 'sensible-browser 127.0.0.1' )
+		.exit(0)
 	.end(done);
-
-//	done();
+	
 });
+

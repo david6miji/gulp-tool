@@ -16,31 +16,18 @@ gulp.task('test_ssh_script', function(done) {
 	var test_env_name = 'gulp-tool';
 	script
     .begin()
-		.ip			( gt_env[test_env_name].host.ssh.ip )
-		.port		( gt_env[test_env_name].host.ssh.port )
+		.ip			( gt_env[test_env_name].host.ssh.ip       )
+		.port		( gt_env[test_env_name].host.ssh.port     )
 		.username   ( gt_env[test_env_name].host.ssh.username )
 		.password   ( gt_env[test_env_name].host.ssh.password )
-		.prompt		( gt_env[test_env_name].host.ssh.prompt ) 
-	.connect    ()
-    .shell      ()
-		.ready		()
-		.cmd		('ls -al')
-		.cmd		('echo $PS1')
-//        .wait       ()
-//        .wait       ('frog@withme2020:~$', timeout, function)
-        .input_ln   ('ls -al')
-//        .wait       ('frog@withme2020:~$')
-//        .is_error    ( function )
-//        .input_ln   ('pppsdfksdjf')
-//        .wait       ('frog@withme2020:~$')
-//        .input_ln   ('exit')
-//        .run        ('pwd')
-//        .run        ('cd ~/gulp-tool/')
-//        .run        ('pwd')
-//		.run        ('ls -al')
-//		.exec        ('ls -al')
+		.prompt		( gt_env[test_env_name].host.ssh.prompt   ) 
+	.connect()
+    .shell()
+		.ready()
+		.cmd		( 'cd /tmp' )
+		.cmd		( 'pwd'     )
+		.cmd		( 'ls -al'  )
 		.exit(0)
 	.end(done);
-
-//	done();
 });
+

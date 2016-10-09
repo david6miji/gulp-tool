@@ -28,6 +28,10 @@ process.on('uncaughtException', function(error) {
 // if it is not then it will be created
 // after get the username, password of local host 
 
+
+
+// end 
+
 // global var
 
 	global.gt_env 		= {};

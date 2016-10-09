@@ -1,8 +1,8 @@
 @ECHO off
 
 ECHO Install docker image of gulp-tool ...
-install_docker_images.bat
+call install_docker_images.bat
 ECHO Create docker data volume of gulp-tool ...
-install_docker_data_volume.bat
+call install_docker_data_volume.bat
 ECHO Install npm ...
-gulp-tool.bat "npm install"
+call gulp-tool.bat "npm install"
